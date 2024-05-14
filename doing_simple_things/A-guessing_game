@@ -1,0 +1,8 @@
+#!/usr/bin/python3
+def Guessing_Game(Guess_number):
+    n = int(input("enter number:"))
+    while n != Guess_number:
+        print("Failed")
+        n =int(input("enter number:"))
+    print("Correct")
+Guessing_Game(5)
