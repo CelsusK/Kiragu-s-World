@@ -1,0 +1,13 @@
+def disemvowel(string_):
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+    new_string = ''
+    for char in string_:
+        if char.lower() not in vowels:
+            new_string += char
+    return new_string
+
+# Test the function
+input_string = "Hello World"
+result = disemvowel(input_string)
+print(result) 
+
