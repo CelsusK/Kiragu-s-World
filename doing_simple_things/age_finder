@@ -1,0 +1,11 @@
+def age():
+    try:
+        age_number = int(input("Enter your age:"))
+        if age_number > 0:
+            return age_number
+        else:
+            print("This is not a positve age number")
+    except ValueError:
+        print("Error:Failed to input a positive age integer value")
+ages = age()
+print(f"You are {age()} years old")
