@@ -1,0 +1,68 @@
+from abc import ABC,abstractmethod
+class Restaurant:
+    @abstractmethod
+    def __init__(self):
+        self.menuitems = {}
+        self.ordermenuitems = []
+    def welcome(self):
+        print("Welcome to C and K's Restaurant.What would you like to order.")
+class MenuItem(Restaurant):
+    def __init__(self):
+        super().__init__()
+        self.menuitems = {
+            "Beverages": ['Tea', 'Coffee', 'ChocolateDrink', 'Water', 'Orange Soda', 'CocaCola', 'MinuteMaid', 'Milkshake', 'Sprite'],
+            "Fastfoods": ['Fries', 'Bhajia', 'ChickenBurger', 'Wings', 'BeefBurger', 'Hotdog', 'Samosas', 'SmokedSausages'],
+            "Appetizers": ['Nachos', 'CrabCake', 'Meatballs', 'ChocolateCake', 'IceCream'],
+            "Soups": ['TomatoSoup', 'ChickenNoodleSoup', 'VegetableSoup', 'PotatoSoup']
+            }
+    def displayorder(self):
+        for category,item in self.menuitems.items():
+            print(f"{category} ,{item}")
+        
+class order(Restaurant):
+    def __init__(self):
+        super().__init__()
+        self.menuitems = {
+            "Beverages": ['Tea', 'Coffee', 'ChocolateDrink', 'Water', 'Orange Soda', 'CocaCola', 'MinuteMaid', 'Milkshake', 'Sprite'],
+            "Fastfoods": ['Fries', 'Bhajia', 'ChickenBurger', 'Wings', 'BeefBurger', 'Hotdog', 'Samosas', 'SmokedSausages'],
+            "Appetizers": ['Nachos', 'CrabCake', 'Meatballs', 'ChocolateCake', 'IceCream'],
+            "Soups": ['TomatoSoup', 'ChickenNoodleSoup', 'VegetableSoup', 'PotatoSoup']
+            }
+        self.orders = []
+    def orders(self):
+        for category,item in self.menuitems:
+            print(f"{category} {','.join(item)}")
+    def takeorder(self,category,item):
+        for category,item in self.menuitems.items():
+            if category in self.menuitems:
+                if item in self.menuitems[category]:
+                    self.orders.append(item)
+                    print(f"{item} has been added to your order")
+                else:
+                    print(f"{item} not in menu{category}")
+            else:
+                print(f"{category}category not in menu items")
+    def display_order(self):
+        if self.orders:
+            print("Your current order includes:")
+            for item in self.orders:
+                print(f"- {item}")
+        else:
+            print("No items ordered yet.")
+
+
+# Using the classes
+restaurant = Restaurant()  # Cannot instantiate an abstract class
+
+# Correct instantiation and usage
+restaurant = MenuItem()
+restaurant.welcome()
+restaurant.displayorder()
+
+# Create an Order instance
+Order = order()
+
+# Show menu and take orders
+Order.takeorder("Beverages", "Coffee")
+Order.takeorder("Fastfoods", "ChickenBurger")
+Order.display_order()

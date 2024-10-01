@@ -1,0 +1,43 @@
+class calculator:
+    def __init__(self):
+        self.__result = None
+    def add(self,a,b):
+        self.__result = a+b
+        return self.__get_result()
+    def subtract(self,a,b):
+        self.__result = a-b
+        return self.__get_result()
+    def multiply(self,a,b):
+        self.__result = a*b
+        return self.__get_result()
+    def divide(self,a,b):
+        if b!=0:
+            self.__result = a/b
+        else:
+            print("Cannot divide by zero")
+        return self.__get_result()
+    def __get_result(self):
+        return self.__result
+calc = calculator()
+try:
+    num1 = float(input("Input your first number:"))
+    num2 = float(input("Input your second number:"))
+except:
+    raise ValueError
+    exit()
+print("Choose an operation:")
+print("1. Add")
+print("2. Subtract")
+print("3. Multiply")
+print("4. Divide")
+choice = input("what is your operator(1/2/3/4):")
+if choice == '1':
+    print(f"The result of addition is: {calc.add(num1,num2)}")
+elif choice == '2':
+    print(f"The result of subtraction is:{calc.subtract(num1,num2)}")
+elif choice == '3':
+    print(f"The result of multiplication is:{calc.multiply(num1,num2)}")
+elif choice == '4':
+    print(f"The result of division is:{calc.divide(num1,num2)}")
+else:
+    print("Invalid choice for operator")
