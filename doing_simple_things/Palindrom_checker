@@ -1,3 +1,4 @@
+#!usr/bin/python3
 def palindrome_checker():
     x = input("Enter your palindrome value: ")
     while x != x[::-1]:
