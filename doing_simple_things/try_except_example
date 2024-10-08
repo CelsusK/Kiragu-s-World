@@ -1,4 +1,4 @@
-#1usr/bin/python3
+#!usr/bin/python3
 def positive_integer():
     try:
         n = int(input("Enter a positive number:"))
