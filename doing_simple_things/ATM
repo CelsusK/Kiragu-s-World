@@ -1,0 +1,55 @@
+#!usr/bin/python3
+'''Write an ATM class that:
+
+Has a private attribute balance.
+Provides methods to:
+deposit money.
+withdraw money (ensure that the withdrawal amount does not exceed the balance).
+check_balance to display the current balance.
+Add a private attribute pin_code and a method to authenticate users with the correct PIN before performing any operation.'''
+class ATM:
+    def __init__(self,balance,pin_code):
+        self.__balance = balance
+        self.__pin_code = pin_code
+        self.__authenticated = False
+    def authenticate(self,enteredpin):
+        self.enteredpin = enteredpin
+        if self.enteredpin == self.__pin_code:
+            self.__authenticated = True
+            print("Authentication succesful")
+            return True
+        else:
+            print("wrong pin!")
+            return False
+    def deposit(self,amount):
+        if self.__authenticated:
+            if amount > 0:
+                self.__balance += amount
+                print(f"The amount is:{amount}.The new balance is {self.__balance}")
+            else:
+                print("Invalid amount")
+        else:
+            print("Authenticate first")
+    def withdraw(self,amount):
+        if self.__authenticated:
+            if amount <= self.__balance:
+                self.__balance -= amount
+                print(f"Amount withdrawn is {amount}.The new balance is {self.__balance}")
+        else:
+            print("Authenticate first")
+    def checkbalance(self):
+        if self.__authenticated:
+            return self.__balance
+        else:
+            print("Authenticate first")
+    def logout(self):
+        self.__authenticated = False
+        print("Logged out successfully")
+
+if __name__ == "__main__":
+    atm = ATM(500,1133)
+    if atm.authenticate(1133):
+        atm.deposit(400)
+        atm.withdraw(300)
+        atm.checkbalance()
+    atm.logout()
