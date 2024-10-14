@@ -1,0 +1,38 @@
+#!usr/bin/python3
+'''Define a class Car that:
+
+Has private attributes make, model, and year.
+Provides a method to start the car that prints “Car started”.
+Add getter and setter methods for make, model, and year. The year should be validated (e.g., it cannot be in the future)'''
+class Car:
+    def __init__(self,make,model,year):
+        self.__make = make
+        self.__model = model
+        self.__year = year
+    def start(self):
+        print("Car started")
+    def get_make(self):
+        return self.__make
+    def set_make(self,make):
+        if isinstance(make,str) and make > 0:
+            self.__make = make
+        else:
+            print("Invalid or Make not known")
+    def get_model(self):
+        return self.__model
+    def set_model(self,model):
+        if isinstance(model,str) and model > 0:
+            self.__model = model
+        else:
+            print("Invalid or Model not known")
+    def get_year(self):
+        return self.__year
+    def set_year(self,year):
+        if year <= 2024:
+            self.__year = year
+        else:
+            print("Year cannot be in the future")
+car = Car("Toyota", "Camry", 2015)
+car.start()  # Output: Car started
+car.set_year(2023)  # Update the year to 2023
+print(car.get_year())  # Output: 2023
