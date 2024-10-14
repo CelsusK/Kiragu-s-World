@@ -1,0 +1,31 @@
+#!usr/bin/python3
+'''Create an Employee class that:
+
+Has private attributes: employee_id, name, and salary.
+Implements methods to:
+Get and set the name of the employee.
+Get and set the salary of the employee, but ensure that the salary cannot be less than zero.'''
+class Employee:
+    def __init__(self,employee_id,name,salary):
+        self.__employee_id = employee_id
+        self.__name = name
+        self.__salary = salary
+    def get_name(self):
+        return self.__name
+    def set_name(self,name):
+        if isinstance(name,str) and len(name) > 0:
+            self.__name = name
+        else:
+            print("Invalid name!")
+    def get_salary(self):
+        return self.__salary
+    def set_salary(self,salary):
+        if  salary > 0:
+            self.__salary = salary
+        else:
+            print("Invalid,salary cannot be less than zero")
+emp = Employee(101, "John", 5000)
+emp.set_name("John Doe")
+emp.set_salary(6000)
+print(emp.get_salary()) 
+print(emp.get_name())
