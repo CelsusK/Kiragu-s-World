@@ -1,0 +1,25 @@
+#!usr/bin/python3
+'''Create an Employee class and then two subclasses: Developer and Manager. 
+Both should have a get_salary() method, but the logic inside should be different.'''
+class Employee:
+    def get_salary(self):
+        print("This is your salary plus bonus")
+class Developer(Employee):
+    def __init__(self,hoursworked,rateperhour,bonus):
+        self.hoursworked = hoursworked
+        self.rateperhour = rateperhour
+        self.bonus = bonus
+    def get_salary(self):
+        salary =(self.hoursworked*self.rateperhour) + self.bonus
+        return salary
+class Manager(Employee):
+    def __init__(self,fixedsalary,bonus):
+        self.fixedsalary = fixedsalary
+        self.bonus = bonus
+    def get_salary(self):
+        salary = self.fixedsalary + self.bonus
+        return salary
+dev = Developer(hoursworked=160,rateperhour=75,bonus=550)
+manager = Manager(fixedsalary=20000,bonus=1000)
+print(f"Developer salary:${dev.get_salary()}")
+print(f"Manager salary: ${manager.get_salary()}")
