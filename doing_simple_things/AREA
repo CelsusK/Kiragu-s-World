@@ -1,0 +1,20 @@
+#!usr/bin/python3
+'''Create a parent class Shape with a method area(), then create subclasses Circle and Square that override the area() method.
+ Calculate the area for each shape.'''
+class Shape:
+    def area(self):
+        print("This is the area of the Shape")
+class Circle(Shape):
+    def __init__(self,radius):
+        self.radius = radius
+    def area(self):
+        return 3.14 *( self.radius**2)
+class Square(Shape):
+    def __init__(self,side):
+        self.side = side
+    def area(self):
+        return self.side**2
+circle = Circle(radius=7)
+square = Square(side=12)
+print(f"The area of this circle is {circle.area()}")
+print(f"The area of this square is {square.area()}")
