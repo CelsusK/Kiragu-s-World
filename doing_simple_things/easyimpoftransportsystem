@@ -1,0 +1,19 @@
+#!usr/bin/env/python3
+class Vehicle:
+    def move():
+        print("moves!")
+class Car(Vehicle):
+    def move():
+        print("Drives!")
+class Bicycle(Vehicle):
+    def move():
+        print("Cycles!")
+class Plane(Vehicle):
+    def move():
+        print("Flies!")
+car = Car
+car.move()
+bicycle = Bicycle
+bicycle.move()
+plane = Plane
+plane.move()
