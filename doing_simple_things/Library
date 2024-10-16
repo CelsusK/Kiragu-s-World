@@ -1,0 +1,43 @@
+#!usr/bin/env/python3
+'''Design a library system with the following base class and subclasses:
+
+LibraryItem: Base class with attributes like title and year.
+Subclasses: Book, Magazine, and DVD. Each subclass should have additional specific attributes (e.g., Book has an author, DVD has duration).
+Each subclass should have a method item_info() that prints details specific to that type of item.
+
+Task:
+
+Create multiple instances of Book, Magazine, and DVD.
+Call item_info() on each and print the specific details of the item.
+'''
+class Libraryitem:
+    def __init__(self,title,year):
+        self.title = title
+        self.year = year
+class Book(Libraryitem):
+    def __init__(self, title, year,author):
+        self.author = author
+        super().__init__(title, year)
+    def item_info(self):
+        print(f"The author of this book is {self.author}.The title of the book is {self.title}.\nThe book was published in the year {self.year}\n")
+class Magazine(Libraryitem):
+    def __init__(self,name, title, year,description):
+        self.description = description
+        self.name = name
+        super().__init__(title, year)
+    def item_info(self):
+        print(f"This is the {self.title}, released in the year {self.year}.\nIt contains {self.description} who is {self.name}\n")
+class DVD(Libraryitem):
+    def __init__(self, title,description, year,duration,):
+        self.description = description
+        self.duration = duration
+        super().__init__(title, year)
+    def item_info(self):
+        print(f"The title is {self.title}.\n{self.description}, it was released in the year {self.year}.The duration is {self.duration}\n")
+    
+book = Book("Bull's Eye",2022,"James Maddison")
+book.item_info()
+magazine = Magazine("Travis Scott","RAP awards",2023,"The rap artist of the Year")
+magazine.item_info()
+dvd = DVD("Terrifier 3","This is a horror film",2024,"1hr 59mins")
+dvd.item_info()
