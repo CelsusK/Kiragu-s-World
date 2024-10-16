@@ -1,0 +1,34 @@
+#!usr/bin/env/python3
+'''Create a base class Person with a method get_details(). Then create subclasses Student and Teacher, each with additional specific attributes and an overridden get_details() method.
+
+Student: Attributes like student_id, grade.
+Teacher: Attributes like teacher_id, subject.
+Task:
+
+Create instances of Student and Teacher.
+Call get_details() on each to print their specific details.'''
+class Person:
+    def __init__(self,name):
+        self.name = name    
+    def get_details(self):
+        print(f"Name is {self.name}")
+class Student(Person):
+    def __init__(self, name,student_id,grade):
+        super().__init__(name)
+        self.student_id = student_id
+        self.grade = grade
+    def get_details(self):
+        super().get_details()
+        print(f"The student id is {self.student_id}\n The student got a {self.grade}")
+class Teacher(Person):
+    def __init__(self, name,teacher_id,subject):
+        super().__init__(name)
+        self.teacher_id = teacher_id
+        self.subject = subject
+    def get_details(self):
+        super().get_details()
+        print(f"The teacher's id is {self.teacher_id}\nThey teach {self.subject}")
+student = Student("Hillary",14499,"B+")
+student.get_details()
+teacher = Teacher("Mr.Skibidi",1243,"Biology")
+teacher.get_details()
