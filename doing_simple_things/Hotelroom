@@ -1,0 +1,30 @@
+#!usr/bin/env/python3
+'''Create a class HotelRoom with private attributes like room_number and is_booked. Add methods to book a room, check its status, and unbook it.
+
+Task:
+
+Implement the booking logic while ensuring encapsulation, so the is_booked attribute cannot be accessed or modified directly from outside the class.'''
+class Hotelroom:
+    def __init__(self,room_number):
+        self.__room_number = room_number
+        self.__is_booked = False
+    def bookroom(self):
+        if not self.__is_booked:
+            print(f"Room {self.__room_number} is booked successfully")
+        else:
+            print(f"Room {self.__room_number} cannot be booked")
+    def unbookroom(self):
+        if not self.__is_booked:
+            print(f"Room {self.__room_number} is booked.\nUnbooked successfully")
+    def checkstatus(self):
+        if not self.__is_booked:
+            print(f"{self.__room_number} is not booked")
+        else:
+            print(f"{self.__room_number} is booked")
+    def get_roomnumber(self):
+        return self.__room_number
+room = Hotelroom(202)
+room.checkstatus()
+room.bookroom()
+room.unbookroom()
+room.checkstatus()
