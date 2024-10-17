@@ -1,0 +1,38 @@
+#!usr/bin/env/python3
+'''Abstract Shape Calculation: Create an abstract class Shape with abstract methods area() and perimeter(). 
+Then, create two subclasses, Square and Triangle, that implement the area() and perimeter() methods.'''
+from abc import ABC,abstractmethod
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+    @abstractmethod
+    def perimeter(self):
+        pass
+class Square(Shape):
+    def __init__(self,side):
+        self.side =side
+    def area(self):
+        print(f"The area of the square is {self.side*self.side}")
+    def perimeter(self):
+        Perimeter = self.side *4
+        print(f"The perimeter of the square is {Perimeter}")
+class Triangle(Shape):
+    def __init__(self,base,height,a,b,c):
+        self.base = base
+        self.height = height
+        self.a = a
+        self.b = b
+        self.c = c
+    def area(self):
+        Area = 0.5*self.base*self.height
+        print(f"The area of the triangle is {Area}")
+    def perimeter(self):
+        perimeter = self.a + self.b + self.c
+        print(f"The perimeter of the triangle is {perimeter}")        
+square = Square(5)
+square.area()
+square.perimeter()
+triangle = Triangle(12,6,5,6,8)
+triangle.area()
+triangle.perimeter()
