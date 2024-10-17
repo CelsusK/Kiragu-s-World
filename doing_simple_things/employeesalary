@@ -1,0 +1,39 @@
+#!usr/bin/env/python3
+'''Create a base class Employee with a method get_salary(). Then create subclasses FullTimeEmployee, PartTimeEmployee, and Contractor that each calculate salary differently:
+
+FullTimeEmployee: Fixed monthly salary.
+PartTimeEmployee: Based on hourly wage and hours worked.
+Contractor: Fixed contract fee.
+Task:
+
+Create instances of each type of employee and calculate their salary using get_salary().'''
+class Employee:
+    def __init__(self,salary):
+        self.salary = salary
+    def get_salary(self):
+        print(f"This is the monthly salary for the employee this month {self.salary}")
+class FulltimeEmployee(Employee):
+    def __init__(self, salary):
+        super().__init__(salary)
+    def get_salary(self):
+        return super().get_salary()
+class ParttimeEmployee(Employee):
+    def __init__(self,hourlywage,hoursworked):
+        self.hoursworked = hoursworked
+        self.hourlywage = hourlywage
+        salary = self.hourlywage * self.hoursworked
+        super().__init__(salary)
+    def get_salary(self):
+        return super().get_salary()
+class Contractor(Employee):
+    def __init__(self,contractfee):
+        self.contractfee = contractfee
+        super().__init__(contractfee)
+    def get_salary(self):
+        return super().get_salary()
+emp = FulltimeEmployee(50000)
+emp.get_salary()
+emp1 = ParttimeEmployee(520,160)
+emp1.get_salary()
+emp2 = Contractor(50000)
+emp2.get_salary()
