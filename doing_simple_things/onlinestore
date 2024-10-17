@@ -1,0 +1,45 @@
+#!usr/bin/env/python3
+'''Create a class Product with attributes like price and quantity. Then create subclasses Electronics, Clothing, and Food.
+
+Electronics should have attributes like warranty_period.
+Clothing should have attributes like size and material.
+Food should have attributes like expiration_date.
+Task:
+
+Implement methods to print product details, applying inheritance to reuse common code.'''
+class Product:
+    def __init__(self,price,quantity):
+        self.price = price
+        self.quantity = quantity
+    def productdetails(self):
+        print(f"The price of the product is {self.price}.\nThe number of products are {self.quantity}")
+class Electronics(Product):
+    def __init__(self, price, quantity,warranty):
+        self.warranty = warranty
+        super().__init__(price, quantity)
+    def productdetails(self):
+        print(f"The electronic product has a warranty for a duration of {self.warranty}")
+        return super().productdetails()
+class Clothing(Product):
+    def __init__(self, price, quantity,size,material):
+        self.size = size
+        self.material = material
+        super().__init__(price, quantity)
+    def productdetails(self):
+        print(f"The sizes of the clothings are {self.size}.\nThe type of material is {self.material}")
+        return super().productdetails()   
+class Food(Product):
+    def __init__(self, price, quantity,expiration_date):
+        self.expiration_date = expiration_date
+        super().__init__(price, quantity) 
+    def productdetails(self):
+        print(f"The food products are due till {self.expiration_date} ")
+        return super().productdetails()
+product = Product(220,24)
+product.productdetails()
+electronics = Electronics(1000,44,"12 months")
+electronics.productdetails()
+clothing = Clothing(640,12,31,"Cotton")
+clothing.productdetails()
+food = Food(550,55,"24/12/2024")
+food.productdetails()
