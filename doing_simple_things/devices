@@ -1,0 +1,42 @@
+#!usr/bin/env/python3
+from abc import ABC, abstractmethod
+class Device(ABC):
+    @abstractmethod
+    def turn_on(self):
+        pass
+class Heatable(ABC):
+    @abstractmethod
+    def heat(self):
+        pass
+class Lightable(ABC):
+    @abstractmethod
+    def light_on(self):
+        pass
+class Securitycapable(ABC):
+    @abstractmethod
+    def activate_security(self):
+        pass
+class Smartlight(Device,Lightable):
+    def turn_on(self):
+        print("Smartlight turning on.")
+    def light_on(self):
+        print("Smartlight light on.")
+class SmartThermostat(Device,Heatable):
+    def turn_on(self):
+        print("Smartthermostat turning on.")
+    def heat(self):
+        print("Smartthermostat heating up.")
+class SmartLock(Device,Securitycapable):
+    def turn_on(self):
+        print("Smartlock turning on.")
+    def activate_security(self):
+        print("Smartlock security activating.")
+smartlight = Smartlight()
+smartlight.turn_on()
+smartlight.light_on()
+thermostat = SmartThermostat()
+thermostat.turn_on()
+thermostat.heat()
+smartlock = SmartLock()
+smartlock.turn_on()
+smartlock.activate_security()
