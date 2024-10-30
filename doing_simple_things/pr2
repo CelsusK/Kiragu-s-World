@@ -1,0 +1,38 @@
+#!usr/bin/env/python3
+'''Create an abstract class MediaItem with an abstract method play().
+Define two interfaces, Downloadable (abstract method download()) and Streamable (abstract method stream()).
+Implement a class Song that inherits from MediaItem, Downloadable, and Streamable.
+Implement another class PodcastEpisode that inherits from MediaItem and Streamable.
+Create instances of Song and PodcastEpisode, then test both downloading and streaming features where applicable.'''
+from abc import ABC, abstractmethod
+class Mediaitem(ABC):
+    @abstractmethod
+    def play(self):
+        pass
+class Downloadable(ABC):
+    @abstractmethod
+    def download(self):
+        pass
+class Streamable(ABC):
+    @abstractmethod
+    def stream(self):
+        pass
+class Song(Mediaitem,Streamable,Downloadable,):
+    def play(self):
+        print("Playing the song Mrs.Officer by lil wayne.")
+    def stream(self):
+        print("The song Mrs.Officer is streamable in Spotify.\nStreaming now...")
+    def download(self):
+        print("The song Mrs.Officer is downloadable.\nDownloading now....")
+class PodcastEpisode(Mediaitem,Streamable):
+    def play(self):
+        print("Playing Episode one of the Podcast 'Hell On Earth'.")
+    def stream(self):
+        print("'Hell on Earth' is streamable.\nStreaming now")
+song = Song()
+song.stream()
+song.play()
+song.download()
+podcast = PodcastEpisode()
+podcast.stream()
+podcast.play()
