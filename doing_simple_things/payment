@@ -1,0 +1,36 @@
+#!usr/bin/env/python3
+'''Create an abstract class Payment with an abstract method process_payment(amount).
+Create two interfaces: OnlinePayment with an abstract method verify_online(), and OfflinePayment with an abstract method verify_offline().
+Implement a CreditCardPayment class that inherits from Payment and OnlinePayment, and a CashPayment class that inherits from Payment and OfflinePayment.
+Create instances of CreditCardPayment and CashPayment, then call their process_payment() methods and verification methods.'''
+from abc import ABC,  abstractmethod
+class Payment(ABC):
+    def __init__(self,amount):
+        self.amount = amount
+    @abstractmethod
+    def process_payment(self):
+        pass
+class OnlinePayment(ABC):
+    @abstractmethod
+    def verify_online(self):
+        pass
+class OfflinePayment(ABC):
+    @abstractmethod
+    def verify_offline(self):
+        pass
+class CreditCardPayment(Payment,OnlinePayment):
+    def process_payment(self):
+        print(f"Processing Card Payment for amount {self.amount}")
+    def verify_online(self):
+        print("Creditcard online payment verified")
+class CashPayment(Payment,OfflinePayment):
+    def process_payment(self):
+        print(f"Processing cash payment of {self.amount}")
+    def verify_offline(self):
+        print("Cash Payment verified offline.")
+credit = CreditCardPayment(35000)
+credit.process_payment()
+credit.verify_online()
+cash = CashPayment(25000)
+cash.process_payment()
+cash.verify_offline()
