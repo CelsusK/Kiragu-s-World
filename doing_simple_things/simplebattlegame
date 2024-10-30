@@ -1,0 +1,42 @@
+#!usr/bin/env/python3
+'''Design an abstract Character class with two abstract methods: attack and defend. Create subclasses:
+
+Warrior who has a strong physical attack.
+Mage who casts spells.
+Archer who uses a ranged attack.
+Instructions:
+
+Each subclass should implement attack and defend with messages describing the action.
+Create instances of each character and call their methods to showcase their unique abilities.
+'''
+from abc import ABC,abstractmethod
+class Character(ABC):
+    @abstractmethod
+    def attack(self):
+        pass
+    @abstractmethod
+    def defend(self):
+        pass
+class Warrior(Character):
+    def __init__(self,weapon,defence):
+        self.weapon = weapon
+        self.defence = defence
+    def attack(self):
+        print(f"Warrior:\nLash the {self.weapon} at open and inflict damage")
+    def defend(self):
+        print(f"Warrior:\nDefend yourself with a {self.defence}")
+class Mage(Character):
+    def __init__(self,spell1,spell2,protectcharm):
+        self.spell1 = spell1
+        self.spell2 = spell2
+        self.protectcharm = protectcharm
+    def attack(self):
+        print(f"Mage:\nUse {self.spell1} spell to throw the opponent.Use {self.spell2} spell to finish your opponent")
+    def defend(self):
+        print(f"Mage:\nUse {self.protectcharm} spell to defend yourself")
+warrior = Warrior("Spear","Shield")
+warrior.attack()
+warrior.defend()
+mage = Mage("Dash","Finish","Barrier")
+mage.defend()
+mage.attack()
