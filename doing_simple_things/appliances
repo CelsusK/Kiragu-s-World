@@ -1,0 +1,30 @@
+#!usr/bin/env/python3
+from abc import ABC, abstractmethod
+class Appliance(ABC):
+    @abstractmethod
+    def turn_on(self):
+        pass
+class Refrigeratable(ABC):
+    @abstractmethod
+    def cool(self):
+        pass
+class Washable(ABC):
+    @abstractmethod
+    def wash(self):
+        pass
+class WashingMachine(Appliance,Washable):
+    def turn_on(self):
+        print("Washing machine turning on.")
+    def wash(self):
+        print("Washing machine washing clothes.")
+class Refrigerator(Appliance,Refrigeratable):
+    def turn_on(self):
+        print("Refrigerator is turning on.")
+    def cool(self):
+        print("Coolong the food products.")
+washingmachine = WashingMachine()
+washingmachine.turn_on()
+washingmachine.wash()
+fridge = Refrigerator()
+fridge.turn_on()
+fridge.cool() 
