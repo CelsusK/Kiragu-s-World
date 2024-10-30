@@ -1,0 +1,29 @@
+#!usr/bin/env/python3
+from abc import ABC,abstractmethod
+class Media:
+    @abstractmethod
+    def play(self):
+        pass
+    @abstractmethod
+    def stop(self):
+        pass
+class Music(Media):
+    def __init__(self,artist,album):
+        self.artist = artist
+        self.album = album
+    def play(self):
+        print(f"Album playing is :{self.album},\nBy {self.artist}")
+    def stop(self):
+        print(f"Stop playing {self.album}")
+class Podcast(Media):
+    def __init__(self,host,episode,Podcastname):
+        self.podcastname = Podcastname
+        self.host = host
+        self.episode = episode
+    def play(self):
+        print(f"Playing {self.podcastname} podcast.\nHosted by {self.host}.\nThis is episode No. {self.episode}")
+music = Music("Cench","WildWest")
+music.play()
+music.stop()
+podcast = Podcast("Amelia",1232,"Harlem Spartans")
+podcast.play()
