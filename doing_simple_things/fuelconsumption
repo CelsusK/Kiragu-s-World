@@ -1,0 +1,34 @@
+#!usr/bin/env/python3
+'''Create an abstract class Vehicle with an abstract method fuel_consumption().
+Implement subclasses Car and Truck, each calculating fuel consumption based on unique formulas.
+Use a polymorphic function to print the fuel consumption of any vehicle.'''
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    @abstractmethod
+    def fuel_consumption(self):
+        pass
+
+class Car(Vehicle):
+    def __init__(self, distance_driven, fuel_used):
+        self.distance_driven = distance_driven
+        self.fuel_used = fuel_used
+
+    def fuel_consumption(self):
+        fuel_consumption_f = self.distance_driven / self.fuel_used
+        print(f"The fuel consumption for this car is {fuel_consumption_f:.3g} l/km")
+
+class Truck(Vehicle):
+    def __init__(self, fuel_used, distance_driven):
+        self.fuel_used = fuel_used
+        self.distance_driven = distance_driven
+
+    def fuel_consumption(self):
+        fuel_consumption_f2 = self.distance_driven / self.fuel_used
+        print(f"The fuel consumption for this truck is {fuel_consumption_f2:.3g} l/km")
+
+car = Car(400, 80)
+car.fuel_consumption()
+
+truck = Truck(280, 800)
+truck.fuel_consumption()

@@ -1,0 +1,27 @@
+#!usr/bin/env/python3
+'''Payment Processing:
+
+Define an abstract class Payment with an abstract method process().
+Create CreditCard and PayPal subclasses that override the process() method.
+Create a polymorphic function that processes payments for any payment type.'''
+from abc import ABC, abstractmethod
+class Payment(ABC):
+    @abstractmethod
+    def process(self):
+        pass
+class CreditCard(Payment):
+    def __init__(self,amount,number):
+        self.amount = amount
+        self.number =number
+    def process(self):
+        print(f"Processing the deposit of {self.amount}Kshs into Creditcard No. {self.number}")
+class PayPal(Payment):
+    def __init__(self,amount,account):
+        self.amount = amount
+        self.account = account
+    def process(self):
+        print(f"Processing the deposit of {self.amount}Kshs into the PayPal account '{self.account}'")
+creditcard = CreditCard(34005,22312)
+creditcard.process()
+paypal = PayPal(500000,"kiragucassian@gmail.com")
+paypal.process()
