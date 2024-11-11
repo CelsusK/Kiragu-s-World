@@ -1,0 +1,24 @@
+#!usr/bin/env/python3
+'''Implement a BankAccount class where the balance attribute is private. 
+Create methods to deposit, withdraw, and retrieve the balance securely with validations.'''
+class BankAccount:
+    def __init__(self,balance):
+        self.__balance = balance
+    def deposit(self,amount):
+        if amount > 0:
+            self.__balance += amount
+            print(f"Deposited {amount}.New balance is {self.__balance}")
+        else:
+            print("Amount deposited should be more than zero!")
+    def withdraw(self,amount):
+        if self.__balance > amount:
+            self.__balance -= amount
+            print(f"Withdrew {amount}. Balance is {self.__balance}")
+        else:
+            print("Invalid! Amount to be withdrawn is more than balance.")
+    def get_balance(self):
+        return self.__balance
+bankacc = BankAccount(35000)
+bankacc.deposit(24000)
+bankacc.withdraw(2200)
+print("Current balance:", bankacc.get_balance())
