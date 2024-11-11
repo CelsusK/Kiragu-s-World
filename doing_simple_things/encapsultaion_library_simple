@@ -1,0 +1,22 @@
+#!usr/bin/env/python3
+'''Create a LibraryBook class with title and __is_checked_out attributes. 
+Use encapsulation to make __is_checked_out private, with a check_out and return_book method to modify its state'''
+class LibraryBook:
+    def __init__(self,title,):
+        self.title = title
+        self.__is_checked_out = False
+    def check_out(self):
+        if not self.__is_checked_out:
+            self.__is_checked_out = True
+            print(f"Book by title '{self.title}' is being checked out.")
+        else:
+            print(f"Book by title '{self.title}' has already been checked out.")
+    def return_book(self):
+        if self.__is_checked_out:
+            self.__is_checked_out = False
+            print(f"The book '{self.title}' has been returned.")
+        else:
+            print(f"The book '{self.title}' is already in the library.")
+library = LibraryBook("Alice in Wonderland")
+library.check_out()
+library.return_book()
