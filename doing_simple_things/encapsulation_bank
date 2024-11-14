@@ -1,0 +1,35 @@
+#!usr/env/python3
+'''Create a BankAccount class with private attributes account_number, account_holder, and balance.
+Implement methods:
+deposit(amount) - increases the balance by the specified amount if it’s positive.
+withdraw(amount) - decreases the balance if there are enough funds.
+get_balance() - returns the current balance.
+Test your class by creating a BankAccount instance, making deposits and withdrawals, and checking the balance.'''
+class BankAccount:
+    def __init__(self,account_number, account_holder,balance):
+        self.__account_number = account_number
+        self.__account_holder = account_holder
+        self.__balance = balance
+    def deposit(self,amount):
+        if amount > 0:
+            self.__balance+=amount
+        else:
+            print("Amount should be a positive value")
+    def withdraw(self,amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+        else:
+            print("Cannot withdraw more than the balance.")
+    def get_details(self):
+        return {
+            "Account Number": self.__account_number,
+            "Account Holder": self.__account_holder,
+
+        }
+    def get_balance(self):
+        return self.__balance
+bank = BankAccount(14722,"Wham",400000)
+bank.deposit(25000)
+bank.withdraw(3300)
+print(bank.get_details())
+print(bank.get_balance())
