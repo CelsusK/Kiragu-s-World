@@ -1,0 +1,36 @@
+#!usr/bin/env/python3
+'''Create a class Student that encapsulates:
+
+Private attributes: name, grades (a list of grades).
+A method to add a grade, but only if the grade is between 0 and 100.
+A method to calculate the average grade.
+Getter and setter methods for the grades (ensuring grades can’t be set directly to invalid values).'''
+class Student:
+    def __init__(self,name,grades=[]):
+        self.__name = name
+        self.__grades = grades
+    def add_grade(self,grade):
+        if isinstance(grade,list):
+            for g in grade:
+                if 0 <= g <= 100:
+                    self.__grades.append(g)
+                else:
+                    print('Grade should be a positive integer and not less than 0 or greater than 100.')
+        elif isinstance(grade,int):
+            if 0 <= grade <= 100:
+                 self.__grades.append (grade)
+            else:
+                print("Grade cannot be less than 0  or greater than 100.")
+        else:
+            print("Invalid input,please input an integer or a list of integers.")
+    def average(self):
+        return sum(self.__grades) / len(self.__grades)
+    def get_grades(self):
+        return self.__grades
+    def get_name(self):
+        return self.__name
+student = Student("Wham",[88,23,77,67,89,92])
+student.add_grade([56,44,39])
+print(f"Student average grade:{student.average():.2f}")
+student.get_grades()
+student.get_name()
