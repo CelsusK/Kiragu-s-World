@@ -1,0 +1,44 @@
+#!usr/bin/env/python3
+'''Build a class to manage products in an e-commerce system.
+
+Requirements:
+
+Each product should have encapsulated attributes like product_id, name, price, quantity, and discount.
+Provide methods to:
+Apply discounts (e.g., apply_discount(percent)).
+Adjust stock levels (add_stock, remove_stock with validation).
+Implement logic to calculate the final price of a product after applying a discount but restrict direct access to the discounted price.
+Bonus Challenge:
+Add a method to "restock" products but only allow restocking if the quantity is below a threshold (e.g., 10 items).
+'''
+class Product:
+    def __init__(self,product_id, name, price, quantity):
+        self.__product_id = product_id
+        self.__name = name
+        self.__price = price
+        self.__quantity = quantity
+        self.__discount = self.__price * 0.1
+    def apply_discount(self):
+        return self.__price - self.__discount
+    def add_stock(self,new_stock):
+        if new_stock > 0:
+            self.__quantity += new_stock
+            print(f"{new_stock} units have been added as new stock")
+        else:
+            print("new stock units should be greater than zero!")
+    def calculate_final_price(self):
+        return self.__price - self.__discount
+    def display_product_info(self):
+        """Displays all details of the product."""
+        print(f"Product ID: {self.__product_id}")
+        print(f"Name: {self.__name}")
+        print(f"Base Price: ${self.__price:.2f}")
+        print(f"Discount Applied: ${self.__discount:.2f}")
+        print(f"Final Price: ${self.calculate_final_price():.2f}")
+        print(f"Quantity in Stock: {self.__quantity}")
+
+product = Product("422KL1","Cereal",1250,3350)
+product.add_stock(2440)
+product.apply_discount()
+print(product.calculate_final_price())
+product.display_product_info()
