@@ -1,0 +1,83 @@
+#!usr/bin/env/python3
+'''Create a FileStorage class for securely storing files.
+
+Requirements:
+Encapsulate attributes such as file_list, encryption_key, and storage_limit.
+Provide methods to:
+Upload files to the system (upload_file), checking if the storage limit is exceeded.
+Download files after verifying the encryption key (download_file).
+Delete files securely from the system (delete_file).
+View all uploaded files, but only for admin users (view_files).
+'''
+class FileStorage:
+    def __init__(self, encryption_key, storage_limit):
+        self.__filelist = []
+        self.__encryption_key = encryption_key
+        self.__storage_limit = storage_limit
+        self.__current_storage = 0
+
+    def upload_file(self, file_size, file_name, key):
+        """Uploads a file if the storage limit is not exceeded and the encryption key is correct."""
+        if self.__encryption_key == key:
+            if file_size <= 0:
+                print("File size must be greater than zero.")
+                return
+            if self.__current_storage + file_size > self.__storage_limit:
+                print("Storage limit exceeded. Cannot upload file.")
+            else:
+                self.__filelist.append(file_name)
+                self.__current_storage += file_size
+                print(f"File '{file_name}' uploaded successfully. Current storage: {self.__current_storage}/{self.__storage_limit} MB")
+        else:
+            print("Wrong encryption key. File upload failed.")
+
+    def download_file(self, key, file_name):
+        """Downloads a file if it exists and the encryption key is correct."""
+        if self.__encryption_key == key:
+            if file_name in self.__filelist:
+                print(f"File '{file_name}' downloaded successfully.")
+            else:
+                print(f"File '{file_name}' not found. Cannot download.")
+        else:
+            print("Wrong encryption key. File download failed.")
+
+    def delete_file(self, file_name, key):
+        """Deletes a file if it exists and the encryption key is correct."""
+        if self.__encryption_key == key:
+            if file_name in self.__filelist:
+                self.__filelist.remove(file_name)
+                print(f"File '{file_name}' deleted successfully.")
+            else:
+                print(f"File '{file_name}' not found. Cannot delete.")
+        else:
+            print("Wrong encryption key. File deletion failed.")
+
+    def view_storage(self, key):
+        """Views current storage usage and files if the encryption key is correct."""
+        if self.__encryption_key == key:
+            print(f"Current storage: {self.__current_storage}/{self.__storage_limit} MB")
+            if self.__filelist:
+                print("Uploaded files:")
+                for file_name in self.__filelist:
+                    print(f"- {file_name}")
+            else:
+                print("No files uploaded yet.")
+        else:
+            print("Wrong encryption key. Cannot view storage details.")
+
+# Example Usage
+filestore = FileStorage(2134, 750)
+
+# Upload files
+filestore.upload_file(35, "Casey", 2134)
+filestore.upload_file(720, "Project", 2134)  
+filestore.upload_file(50, "Photo", 1111)     
+
+filestore.download_file(2134, "Casey")
+filestore.download_file(2134, "NonExistentFile")  
+
+filestore.delete_file("Casey", 2134)
+filestore.delete_file("Photo", 2134)             
+
+filestore.view_storage(2134)
+filestore.view_storage(1111)                     
