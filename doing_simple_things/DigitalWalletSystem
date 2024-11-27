@@ -1,0 +1,56 @@
+#!usr/bin/env/python3
+'''Digital Wallet System
+Scenario:
+Design a Digital Wallet class for a payment system.
+
+Requirements:
+Encapsulate attributes such as wallet_id, balance, transaction_history, and pin.
+Provide methods to:
+Add funds to the wallet (add_funds).
+Make a payment (make_payment), only if the correct pin is provided.
+View transaction history, but only after verifying the pin.
+Update the pin, ensuring the new pin is different from the old one.
+'''
+class DigitalWalletSystem:
+    def __init__(self,wallet_id, balance,pin):
+        self.__wallet_id = wallet_id
+        self.__balance = balance
+        self.__pin = pin
+        self.__transaction_history = []
+    def add_funds(self,funds):
+        if funds > 0:
+            self.__balance += funds
+            self.__transaction_history.append(f"{funds}Kshs has been added to the wallet.")
+            print(f"{funds}Kshs has been added to your wallet.")
+        else:
+            print("Funds to be added should be greater than zero.")
+    def make_payment(self,pin,amount):
+        PIN = int(input("Enter your PIN:"))
+        if PIN == self.__pin:
+            if amount > 0:
+                self.__balance -= amount
+                self.__transaction_history.append(f"{amount}Kshs has been deducted from the wallet.")
+                print(f"{amount}Kshs has been paid.\nNew balance is {self.__balance}")
+            else:
+                print("Amount to be paid should be greater than zero.")
+        else:
+            print("Invalid PIN try again.")
+            PIN = int(input("Enter your PIN:"))
+    def change_pin(self,new_pin):
+        self.__pin == new_pin
+        self.__transaction_history.append("PIN has been changed")
+        print("PIN has been changed successfully")
+    def transaction_history(self):
+        for transaction in self.__transaction_history:
+            print(f"Transactions made: {transaction}")
+    def get_balance(self,pin):
+        if pin == self.__pin:
+            print(f"Your current balance: {self.__balance}Kshs")
+        else:
+            print("Wrong PIN.")
+wallet = DigitalWalletSystem("K1CEL",25000,4422)
+wallet.add_funds(2300)
+wallet.make_payment(4422,120)
+wallet.change_pin(4040)
+wallet.transaction_history()
+wallet.get_balance(4422)
