@@ -8,8 +8,6 @@ Provide methods to:
 Apply discounts (e.g., apply_discount(percent)).
 Adjust stock levels (add_stock, remove_stock with validation).
 Implement logic to calculate the final price of a product after applying a discount but restrict direct access to the discounted price.
-Bonus Challenge:
-Add a method to "restock" products but only allow restocking if the quantity is below a threshold (e.g., 10 items).
 '''
 class Product:
     def __init__(self,product_id, name, price, quantity):
